@@ -3,3 +3,11 @@
 <p><strong>Style:</strong> <%=@beer.style%></p>
 <br>
 <p><strong>Rating:</strong> <%=@beer.rating%></p>
+
+<form action="/beers/<%=@beer.id%>" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>
+
+<a href="/beers/<%=@beer.id%>/edit"><button>Edit this Beer</button></a>
+<a href="/beers"><button>View all my Beers</button></a>

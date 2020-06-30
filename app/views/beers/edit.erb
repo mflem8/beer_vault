@@ -1,6 +1,6 @@
 <h2>Edit a Beer!</h2>
 <br>
-<form action="beers/<%=@beer.id%>" method="POST">
+<form action="/beers/<%=@beer.id%>" method="POST">
   <input type="hidden" id="hidden" name="_method" value="patch">
   <br>
   <label>Name: </label>
@@ -12,5 +12,5 @@
   <label>Rating: </label>
   <input type="integer" name="rating" value="<%=@beer.rating%>">
   <br>
-  <input type="submit" value="Submit" id="submit">
+  <input type="submit">
 </form>

@@ -14,7 +14,7 @@ class BeerController < ApplicationController
     user = User.find_by_id(params[:user_id])
     beer = user.beers.build(params)
     if beer.save
-      redirect '/beers/'
+      redirect '/beers'
     else
       redirect '/beers/new'
     end
@@ -42,5 +42,13 @@ class BeerController < ApplicationController
     else
       redirect "/beers/#{beer}/edit"
     end
+  end
+
+  delete '/beers/:id' do
+    beer = Beer.find_by_id(params[:id])
+    if beer
+      beer.delete
+    end
+    redirect '/beers'
   end
 end
