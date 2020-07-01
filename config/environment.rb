@@ -8,7 +8,7 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
-requirie 'dotenv'
+require 'dotenv'
 Dotenv.load
 
 require "securerandom"
