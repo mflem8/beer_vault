@@ -57,10 +57,14 @@ class BeerController < ApplicationController
   patch '/beers/:id' do
     if logged_in?
       beer = current_user.beers.find_by_id(params[:id])
-      if beer.update(name: params[:name], style: params[:style], rating: params[:rating])
-        redirect "/beers/#{beer.id}"
+      if beer
+        if beer.update(name: params[:name], style: params[:style], rating: params[:rating])
+          redirect "/beers/#{beer.id}"
+        else
+          redirect "/beers/#{beer}/edit"
+        end
       else
-        redirect "/beers/#{beer}/edit"
+        redirect '/beers'
       end
     else
       redirect '/login'

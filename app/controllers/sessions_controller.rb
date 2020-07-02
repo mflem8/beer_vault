@@ -1,21 +1,26 @@
 class SessionsController < ApplicationController
 
-  get '/login' do
-    erb :"sessions/login"
+  get '/sign_in' do
+    erb :"sessions/sign_in"
   end
 
-  post '/login' do
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+  post '/sign_in' do
+    @current_user = User.find_by(username: params[:username])
+    if @current_user && current_user.authenticate(params[:password])
+      session[:user_id] = @current_user.id
       redirect '/beers'
     else
-      redirect '/login'
+      redirect '/sign_up'
     end
   end
 
-  get '/logout' do
-    session.clear
-    redirect '/login'
+  get '/sign_out' do
+    if logged_in?
+      session[:user_id] = nil
+      redirect to '/'
+    else
+      redirect to '/'
+    end
   end
+  
 end
