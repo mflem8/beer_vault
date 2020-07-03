@@ -1,4 +1,4 @@
-class BeerController < ApplicationController
+class BeersController < ApplicationController
 
   get '/beers' do
     if logged_in?
@@ -6,6 +6,7 @@ class BeerController < ApplicationController
       erb :'beers/index'
     else
       redirect '/sign_in'
+    end
   end
 
   get '/beers/new' do
@@ -13,6 +14,7 @@ class BeerController < ApplicationController
       erb :'/beers/new'
     else
       redirect '/sign_in'
+    end
   end
 
   post '/beers' do
@@ -37,7 +39,7 @@ class BeerController < ApplicationController
         redirect '/beers'
       end
     else
-      redirect '/login'
+      redirect '/sign_in'
     end
   end
 
@@ -72,17 +74,15 @@ class BeerController < ApplicationController
   end
 
 
-delete '/beers/:id' do
+  delete '/beers/:id' do
         if logged_in?
-            beer = Beer.find_by_id(params[:id])
+            beer = current_user.Beer.find_by_id(params[:id])
             if beer
                 beer.delete
             end
             redirect '/beers'
         else
             redirect '/sign_in'
-          end
         end
-      end
   end
 end

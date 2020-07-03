@@ -7,5 +7,5 @@ end
 use Rack::MethodOverride
 use SessionsController
 use UsersController
-use BeerController
+use BeersController
 run ApplicationController
