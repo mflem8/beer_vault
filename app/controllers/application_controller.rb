@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    erb :"sessions/sign_in"
   end
 
   helpers do
@@ -22,5 +22,5 @@ class ApplicationController < Sinatra::Base
       @user ||= User.find_by_id(session[:user_id]) if logged_in?
     end
   end
-  
+
 end
