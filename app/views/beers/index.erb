@@ -4,3 +4,15 @@
 <% @beers.each do |b| %>
   <p><strong><a href="/beers/<%=b.id%>"><%=b.name%></a></strong></p>
 <% end %>
+
+<h2>Add a Beer!</h2>
+<br>
+<form action="/beers" method="POST">
+<label>Name: </label><input type="text" name="name">
+<br>
+<label>Style: </label><input type="text" name="style">
+<br>
+<label>Rating: </label><input type="integer" name="rating">
+<br>
+<input type="submit" value="Submit" id="submit">
+</form>
