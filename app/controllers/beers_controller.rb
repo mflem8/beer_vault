@@ -76,7 +76,7 @@ class BeersController < ApplicationController
 
   delete '/beers/:id' do
         if logged_in?
-            beer = current_user.Beer.find_by_id(params[:id])
+            beer = current_user.beers.find_by_id(params[:id])
             if beer
                 beer.delete
             end
